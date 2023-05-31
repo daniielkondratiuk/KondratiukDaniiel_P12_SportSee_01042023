@@ -1,0 +1,35 @@
+.dashboard {
+    position: absolute;
+    overflow-y: scroll;
+    left: 114px;
+    top: 90px;
+    right: 0;
+    bottom: 0;
+    padding: 20px 60px 0 60px;
+}
+
+.dashboard__recharts-wrap {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 835px;
+}
+.dashboard__subrecharts-wrap {
+    display: flex;
+    justify-content: space-between;
+}
+
+.container  {
+    width: 100%;
+    height: 100%;
+    background: #fff;
+}
+
+@media (min-width: 1024px) and (max-width: 1240px){
+    .dashboard {
+        padding: 20px 20px 0 20px;
+    }
+    .dashboard__recharts-wrap {
+        width: 640px;
+    }
+}

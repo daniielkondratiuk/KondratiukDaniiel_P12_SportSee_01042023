@@ -1,0 +1,12 @@
+.energy-card {
+    display: flex;
+    flex-direction: column;
+    width: 260px;
+    row-gap: 35px;
+}
+@media (min-width: 1024px) and (max-width: 1240px){
+    .energy-card {
+        width: 220px;
+        row-gap: 30px;
+    }
+}

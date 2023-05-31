@@ -1,0 +1,64 @@
+.score {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 2rem;
+    width: 260px;
+    height: 260px;
+    background: #FBFBFB;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    border-radius: 5px;
+}
+
+
+.score__title {
+    position: absolute;
+    color: #20253A;
+    top: 24px;
+    left: 30px;
+    font-size: 15px;
+}
+
+.score .recharts-legend-wrapper {
+    position: absolute;
+    left: 50%!important;
+    top: 50%!important;
+    width: 131px!important;
+    height: 131px!important;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    border-radius: 50%;
+    background: #fff;
+}
+
+.score__legend {
+    height: 100%;
+    width: 90px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.score__legend-percent {
+    color: #282D30;
+    font-weight: 700;
+    font-size: 26px;
+}
+
+.score__legend-text {
+    color: #74798C;
+    font-size: 16px;
+}
+
+@media (min-width: 1024px) and (max-width: 1240px){
+    .score {
+        width: 200px;
+        height: 200px;
+    }
+    .score__title {
+        top: 15px;
+        left: 15px;
+    }
+}

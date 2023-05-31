@@ -1,0 +1,18 @@
+.header {
+    color: #000;
+    padding-bottom: 20px;
+}
+
+.header__title {
+    font-size: 48px;
+    font-weight: 500;
+    padding-bottom: 18px;
+}
+
+.header__name {
+    color: #FF0101;
+}
+.header__text {
+    font-size: 18px;
+    font-weight: 400;
+}

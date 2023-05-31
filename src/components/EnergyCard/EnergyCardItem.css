@@ -1,0 +1,28 @@
+.energy-card-item {
+    display: flex;
+    column-gap: 24px;
+    padding: 32px;
+    background: #FBFBFB;
+    border-radius: 5px;
+}
+.energy-card-item > div {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 5px 0;
+}
+.energy-card-item__value {
+    font-size: 20px;
+    font-weight: 700;
+}
+.energy-card-item__title {
+    font-size: 14px;
+    font-weight: 500;
+    color: #74798C;
+}
+
+@media (min-width: 1024px) and (max-width: 1240px){
+    .energy-card-item {
+        padding: 18px;
+    }
+}

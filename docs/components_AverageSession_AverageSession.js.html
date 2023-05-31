@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>JSDoc: Source: components/AverageSession/AverageSession.js</title>
+
+    <script src="scripts/prettify/prettify.js"> </script>
+    <script src="scripts/prettify/lang-css.js"> </script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+</head>
+
+<body>
+
+<div id="main">
+
+    <h1 class="page-title">Source: components/AverageSession/AverageSession.js</h1>
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>import React from 'react';
+import {Legend, Line, LineChart, ResponsiveContainer, Tooltip, XAxis, YAxis} from "recharts";
+import {CustomTooltipAverageSession} from "../CustomElements/CustomElements";
+import './AverageSession.css'
+
+/**
+ * Composant qui affiche un graphique de la durée moyenne des sessions.
+ * @param {Object} props - Les propriétés du composant.
+ * @param {Object} props.averageSession - Les données de la durée moyenne des sessions.
+ * @returns {JSX.Element} - Le composant AverageSession.
+ */
+const AverageSession = ({averageSession}) => {
+    return (
+        &lt;div className='avgSession'>
+            {/*&lt;h3> Durée moyenne des sessions &lt;/h3>*/}
+            &lt;ResponsiveContainer width='100%' height='100%' className='objectif-responsive'>
+                &lt;LineChart
+                    className='objectif-line'
+                    width='50%' height='50%' data={averageSession.sessions}
+                    margin={{top: 5, right: 10, left: 10, bottom: 5}}
+                    onMouseMove={checkInfo}
+                    onMouseLeave={clearCheckInfo}
+                >
+                    &lt;XAxis dataKey='day' stroke='#FFFFFF' opacity={0.5} tickLine={false} axisLine={false}/>
+                    &lt;YAxis domain={["dataMin-50", "dataMax+50"]} padding={{top: 50}} stroke='#FFFFFF' opacity={0.5}
+                           tickLine={false} axisLine={false} hide/>
+                    &lt;Tooltip cursor={{stroke: 'red', strokeWidth: 2}} content={&lt;CustomTooltipAverageSession/>}/>
+                    &lt;Legend/>
+                    &lt;Line type='natural' dataKey='sessionLength' stroke='#FFFFFF' dot={false} strokeWidth={2}
+                          legendType='none'
+                          activeDot={{
+                              stroke: "white",
+                              strokeOpacity: 0.2,
+                              fill: "white",
+                              strokeWidth: 15,
+                              r: 5,
+                          }}
+                    />
+                &lt;/LineChart>
+            &lt;/ResponsiveContainer>
+        &lt;/div>
+    )
+};
+
+/**
+ * @function checkInfo - Fonction qui modifie l'arrière-plan du graphique lorsqu'un tooltip est actif.
+ * @param {Object} event - L'événement onMouseMove du graphique.
+ * @returns {void}
+ */
+const checkInfo = (event) => {
+    const div = document.getElementsByClassName('objectif-responsive')[0]
+    if (event.isTooltipActive) {
+        const windowWidth = div.clientWidth
+        const mouseXpercentage = Math.round((event.activeCoordinate.x / windowWidth) * 100)
+        div.style.background = `linear-gradient(90deg, rgba(255,0,0,1) ${mouseXpercentage}%, rgba(175,0,0,0.5) ${mouseXpercentage}%, rgba(175,0,0,0.5) 100%)`
+    }
+}
+
+// const checkInfo = (event) => {
+//     const div = document.querySelector('.objectif-responsive');
+//     const percentage = Math.round((event.activeCoordinate.x / div.clientWidth) * 100);
+//     div.classList.toggle('gradient-bg', event.isTooltipActive);
+//     div.style.setProperty('--bg-gradient-percentage', `${percentage}%`);
+// };
+
+/**
+ * Fonction qui réinitialise l'arrière-plan du graphique lorsqu'un tooltip n'est plus actif.
+ * @function
+ * @param {Object} event - L'événement onMouseLeave du graphique.
+ * @returns {void}
+ */
+const clearCheckInfo = (event) => {
+    const div = document.getElementsByClassName('objectif-responsive')[0]
+    if (!event.isTooltipActive) {
+        div.style.background = `#FF0000`
+    }
+}
+export default AverageSession;
+</code></pre>
+        </article>
+    </section>
+
+
+
+
+</div>
+
+<nav>
+    <h2><a href="index.html">Home</a></h2><h3>Global</h3><ul><li><a href="global.html#Activity">Activity</a></li><li><a href="global.html#App">App</a></li><li><a href="global.html#AverageSession">AverageSession</a></li><li><a href="global.html#EnergyCard">EnergyCard</a></li><li><a href="global.html#EnergyCardItem">EnergyCardItem</a></li><li><a href="global.html#Header">Header</a></li><li><a href="global.html#Loading">Loading</a></li><li><a href="global.html#Navbar">Navbar</a></li><li><a href="global.html#Performance">Performance</a></li><li><a href="global.html#Score">Score</a></li><li><a href="global.html#Sidebar">Sidebar</a></li><li><a href="global.html#checkInfo-Fonctionquimodifiel'arri%25C3%25A8re-plandugraphiquelorsqu'untooltipestactif.">checkInfo - Fonction qui modifie l'arrière-plan du graphique lorsqu'un tooltip est actif.</a></li><li><a href="global.html#clearCheckInfo">clearCheckInfo</a></li><li><a href="global.html#getImage-Renvoiel'ic%25C3%25B4necorrespondant%25C3%25A0untitre">getImage - Renvoie l'icône correspondant à un titre</a></li><li><a href="global.html#loadData">loadData</a></li></ul>
+</nav>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 4.0.2</a> on Mon May 01 2023 21:21:44 GMT+0200 (Central European Summer Time)
+</footer>
+
+<script> prettyPrint(); </script>
+<script src="scripts/linenumber.js"> </script>
+</body>
+</html>
