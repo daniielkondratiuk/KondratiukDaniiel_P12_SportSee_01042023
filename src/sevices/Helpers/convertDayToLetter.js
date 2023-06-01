@@ -1,5 +1,8 @@
-//TODO change func to class
-
+/**
+ * Convertit un tableau d'objets avec une propriété numérique "jour" en un tableau d'objets avec une propriété de caractère "jour".
+ * @param {Array} originalArray - Tableau original d'objets.
+ * @returns {Array} - Le tableau d'objets converti.
+ */
 const convertDayToLetter = (originalArray) => {
     return originalArray.map((item) => {
         let dayLetter;

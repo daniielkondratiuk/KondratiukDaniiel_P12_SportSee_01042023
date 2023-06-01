@@ -1,3 +1,52 @@
+/**
+ * Données principales des utilisateurs.
+ * @typedef {Object} UserMainData
+ * @property {number} userId - Identifiant de l'utilisateur.
+ * @property {Object} userInfos - Informations sur l'utilisateur.
+ * @property {string} userInfos.firstName - Prénom de l'utilisateur.
+ * @property {string} userInfos.lastName - Nom de l'utilisateur.
+ * @property {number} userInfos.age - Âge de l'utilisateur.
+ * @property {number} todayScore - Score actuel de l'utilisateur.
+ * @property {Object} keyData - Données clés de l'utilisateur.
+ * @property {number} keyData.calorieCount - Compteur de calories de l'utilisateur.
+ * @property {number} keyData.proteinCount - Compteur de protéines de l'utilisateur.
+ * @property {number} keyData.carbohydrateCount - Compteur de glucides de l'utilisateur.
+ * @property {number} keyData.lipidCount - Compteur de lipides de l'utilisateur.
+ */
+
+/**
+ * Activité des utilisateurs.
+ * @typedef {Object} UserActivity
+ * @property {number} userId - Identifiant de l'utilisateur.
+ * @property {Object[]} sessions - Sessions de l'utilisateur.
+ * @property {string} sessions.day - Jour de la session au format 'YYYY-MM-DD'.
+ * @property {number} sessions.kilogram - Poids de l'utilisateur lors de la session.
+ * @property {number} sessions.calories - Calories brûlées lors de la session.
+ */
+
+/**
+ * Moyenne des sessions des utilisateurs.
+ * @typedef {Object} UserAverageSessions
+ * @property {number} userId - Identifiant de l'utilisateur.
+ * @property {Object[]} sessions - Sessions de l'utilisateur.
+ * @property {number} sessions.day - Jour de la session.
+ * @property {number} sessions.sessionLength - Durée de la session en minutes.
+ */
+
+/**
+ * Performances des utilisateurs.
+ * @typedef {Object} UserPerformance
+ * @property {number} userId - Identifiant de l'utilisateur.
+ * @property {Object.<number, string>} kind - Types de performances.
+ * @property {Object[]} data - Données de performances de l'utilisateur.
+ * @property {number} data.value - Valeur de performance.
+ * @property {number} data.kind - Type de performance (correspond à la clé dans l'objet 'kind').
+ */
+
+/**
+ * Données principales des utilisateurs.
+ * @type {UserMainData[]}
+ */
 export const USER_MAIN_DATA = [
     {
         userId: 12,
@@ -31,6 +80,11 @@ export const USER_MAIN_DATA = [
     }
 ]
 
+
+/**
+ * Activité des utilisateurs.
+ * @type {UserActivity[]}
+ */
 export const USER_ACTIVITY = [
     {
         userId: 12,
@@ -113,6 +167,10 @@ export const USER_ACTIVITY = [
     }
 ]
 
+/**
+ * Moyenne des sessions des utilisateurs.
+ * @type {UserAverageSessions[]}
+ */
 export const USER_AVERAGE_SESSIONS = [
     {
         userId: 12,
@@ -182,6 +240,10 @@ export const USER_AVERAGE_SESSIONS = [
     }
 ]
 
+/**
+ * Performances des utilisateurs.
+ * @type {UserPerformance[]}
+ */
 export const USER_PERFORMANCE = [
     {
         userId: 12,
