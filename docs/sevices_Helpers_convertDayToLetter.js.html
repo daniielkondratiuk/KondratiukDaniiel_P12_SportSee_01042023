@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>JSDoc: Source: components/EnergyCard/EnergyCard.js</title>
+    <title>JSDoc: Source: sevices/Helpers/convertDayToLetter.js</title>
 
     <script src="scripts/prettify/prettify.js"> </script>
     <script src="scripts/prettify/lang-css.js"> </script>
@@ -17,7 +17,7 @@
 
 <div id="main">
 
-    <h1 class="page-title">Source: components/EnergyCard/EnergyCard.js</h1>
+    <h1 class="page-title">Source: sevices/Helpers/convertDayToLetter.js</h1>
 
     
 
@@ -26,27 +26,49 @@
     
     <section>
         <article>
-            <pre class="prettyprint source linenums"><code>import React from 'react';
-import './EnergyCard.css'
-import EnergyCardItem from "./EnergyCardItem";
-import transformEnergyData from "../../sevices/Helpers/formattingEnergyData";
-
-/**
- *Composant représentant une carte énergétique affichant une liste de valeurs d'énergie
- * @param {Object} props - Les propriétés du composant
- * @param {Array} props.energyList - La liste des valeurs d'énergie à afficher
- * @returns {JSX.Element} - Le composant de la carte énergétique
+            <pre class="prettyprint source linenums"><code>/**
+ * Convertit un tableau d'objets avec une propriété numérique "jour" en un tableau d'objets avec une propriété de caractère "jour".
+ * @param {Array} originalArray - Tableau original d'objets.
+ * @returns {Array} - Le tableau d'objets converti.
  */
-const EnergyCard = ({energyList}) => {
-    const energyListFormat = transformEnergyData(energyList)
-    return (
-        &lt;div className="energy-card">
-            {energyListFormat.map(el => &lt;EnergyCardItem key={el.title} {...el}/>)}
-        &lt;/div>
-    );
+const convertDayToLetter = (originalArray) => {
+    return originalArray.map((item) => {
+        let dayLetter;
+        switch (item.day) {
+            case 1:
+                dayLetter = 'L';
+                break;
+            case 2:
+                dayLetter = 'M';
+                break;
+            case 3:
+                dayLetter = 'M';
+                break;
+            case 4:
+                dayLetter = 'J';
+                break;
+            case 5:
+                dayLetter = 'V';
+                break;
+            case 6:
+                dayLetter = 'S';
+                break;
+            case 7:
+                dayLetter = 'D';
+                break;
+            default:
+                dayLetter = '';
+        }
+        return {
+            day: dayLetter,
+            sessionLength: item.sessionLength,
+        };
+    })
 };
 
-export default EnergyCard;
+
+
+export default convertDayToLetter
 </code></pre>
         </article>
     </section>

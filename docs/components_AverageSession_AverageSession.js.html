@@ -30,6 +30,7 @@
 import {Legend, Line, LineChart, ResponsiveContainer, Tooltip, XAxis, YAxis} from "recharts";
 import {CustomTooltipAverageSession} from "../CustomElements/CustomElements";
 import './AverageSession.css'
+import convertDayToLetter from "../../sevices/Helpers/convertDayToLetter";
 
 /**
  * Composant qui affiche un graphique de la durée moyenne des sessions.
@@ -40,11 +41,11 @@ import './AverageSession.css'
 const AverageSession = ({averageSession}) => {
     return (
         &lt;div className='avgSession'>
-            {/*&lt;h3> Durée moyenne des sessions &lt;/h3>*/}
-            &lt;ResponsiveContainer width='100%' height='100%' className='objectif-responsive'>
+            &lt;h3> Durée moyenne des sessions &lt;/h3>
+            &lt;ResponsiveContainer width='100%' height='100%' className='avgSession-responsive'>
                 &lt;LineChart
-                    className='objectif-line'
-                    width='50%' height='50%' data={averageSession.sessions}
+                    className='avgSession-line'
+                    width='50%' height='50%' data={convertDayToLetter(averageSession.sessions)}
                     margin={{top: 5, right: 10, left: 10, bottom: 5}}
                     onMouseMove={checkInfo}
                     onMouseLeave={clearCheckInfo}
@@ -76,16 +77,16 @@ const AverageSession = ({averageSession}) => {
  * @returns {void}
  */
 const checkInfo = (event) => {
-    const div = document.getElementsByClassName('objectif-responsive')[0]
+    const div = document.getElementsByClassName('avgSession-responsive')[0]
     if (event.isTooltipActive) {
         const windowWidth = div.clientWidth
         const mouseXpercentage = Math.round((event.activeCoordinate.x / windowWidth) * 100)
-        div.style.background = `linear-gradient(90deg, rgba(255,0,0,1) ${mouseXpercentage}%, rgba(175,0,0,0.5) ${mouseXpercentage}%, rgba(175,0,0,0.5) 100%)`
+        div.style.background = `linear-gradient(90deg, rgba(255,0,0,1) ${mouseXpercentage}%, rgba(175,0,0,1) ${mouseXpercentage}%, rgba(175,0,0,1) 100%)`
     }
 }
 
 // const checkInfo = (event) => {
-//     const div = document.querySelector('.objectif-responsive');
+//     const div = document.querySelector('.avgSession-responsive');
 //     const percentage = Math.round((event.activeCoordinate.x / div.clientWidth) * 100);
 //     div.classList.toggle('gradient-bg', event.isTooltipActive);
 //     div.style.setProperty('--bg-gradient-percentage', `${percentage}%`);
@@ -98,7 +99,7 @@ const checkInfo = (event) => {
  * @returns {void}
  */
 const clearCheckInfo = (event) => {
-    const div = document.getElementsByClassName('objectif-responsive')[0]
+    const div = document.getElementsByClassName('avgSession-responsive')[0]
     if (!event.isTooltipActive) {
         div.style.background = `#FF0000`
     }
@@ -114,13 +115,13 @@ export default AverageSession;
 </div>
 
 <nav>
-    <h2><a href="index.html">Home</a></h2><h3>Global</h3><ul><li><a href="global.html#Activity">Activity</a></li><li><a href="global.html#App">App</a></li><li><a href="global.html#AverageSession">AverageSession</a></li><li><a href="global.html#EnergyCard">EnergyCard</a></li><li><a href="global.html#EnergyCardItem">EnergyCardItem</a></li><li><a href="global.html#Header">Header</a></li><li><a href="global.html#Loading">Loading</a></li><li><a href="global.html#Navbar">Navbar</a></li><li><a href="global.html#Performance">Performance</a></li><li><a href="global.html#Score">Score</a></li><li><a href="global.html#Sidebar">Sidebar</a></li><li><a href="global.html#checkInfo-Fonctionquimodifiel'arri%25C3%25A8re-plandugraphiquelorsqu'untooltipestactif.">checkInfo - Fonction qui modifie l'arrière-plan du graphique lorsqu'un tooltip est actif.</a></li><li><a href="global.html#clearCheckInfo">clearCheckInfo</a></li><li><a href="global.html#getImage-Renvoiel'ic%25C3%25B4necorrespondant%25C3%25A0untitre">getImage - Renvoie l'icône correspondant à un titre</a></li><li><a href="global.html#loadData">loadData</a></li></ul>
+    <h2><a href="index.html">Home</a></h2><h3>Classes</h3><ul><li><a href="DataLoader.html">DataLoader</a></li></ul><h3>Global</h3><ul><li><a href="global.html#Activity">Activity</a></li><li><a href="global.html#App">App</a></li><li><a href="global.html#AverageSession">AverageSession</a></li><li><a href="global.html#EnergyCard">EnergyCard</a></li><li><a href="global.html#EnergyCardItem">EnergyCardItem</a></li><li><a href="global.html#Header">Header</a></li><li><a href="global.html#Loading">Loading</a></li><li><a href="global.html#Navbar">Navbar</a></li><li><a href="global.html#Performance">Performance</a></li><li><a href="global.html#Score">Score</a></li><li><a href="global.html#Sidebar">Sidebar</a></li><li><a href="global.html#USER_ACTIVITY">USER_ACTIVITY</a></li><li><a href="global.html#USER_AVERAGE_SESSIONS">USER_AVERAGE_SESSIONS</a></li><li><a href="global.html#USER_MAIN_DATA">USER_MAIN_DATA</a></li><li><a href="global.html#USER_PERFORMANCE">USER_PERFORMANCE</a></li><li><a href="global.html#checkInfo-Fonctionquimodifiel'arri%25C3%25A8re-plandugraphiquelorsqu'untooltipestactif.">checkInfo - Fonction qui modifie l'arrière-plan du graphique lorsqu'un tooltip est actif.</a></li><li><a href="global.html#clearCheckInfo">clearCheckInfo</a></li><li><a href="global.html#convertDayToLetter">convertDayToLetter</a></li><li><a href="global.html#getImage-Renvoiel'ic%25C3%25B4necorrespondant%25C3%25A0untitre">getImage - Renvoie l'icône correspondant à un titre</a></li></ul>
 </nav>
 
 <br class="clear">
 
 <footer>
-    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 4.0.2</a> on Mon May 01 2023 21:21:44 GMT+0200 (Central European Summer Time)
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 4.0.2</a> on Thu Jun 01 2023 13:44:45 GMT+0200 (Central European Summer Time)
 </footer>
 
 <script> prettyPrint(); </script>

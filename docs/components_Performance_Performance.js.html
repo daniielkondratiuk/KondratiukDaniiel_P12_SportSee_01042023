@@ -26,7 +26,7 @@
     
     <section>
         <article>
-            <pre class="prettyprint source linenums"><code>import React from 'react';
+            <pre class="prettyprint source linenums"><code>import React, {useEffect, useState} from 'react';
 import {Legend, PolarAngleAxis, PolarGrid, Radar, RadarChart, ResponsiveContainer} from "recharts";
 import capitalizeFirstLetter from "../../sevices/Helpers/capitalizeFirstLetter";
 import './Performance.css'
@@ -41,6 +41,22 @@ import './Performance.css'
  * @returns {JSX.Element} Graphique radar de performance.
  */
 const Performance = ({performance}) => {
+    const [polarProps, setPolarProps] = useState({});
+
+    useEffect(() => {
+        const newPolarProps = window.innerWidth > 1024
+            ? {
+                outerRadius: 70,
+                polarRadius: [10, 20, 40, 55],
+                fontSize: '12px',
+            }
+            : {
+                outerRadius: 50,
+                polarRadius: [5, 10, 20, 35],
+                fontSize: '10px',
+            };
+        setPolarProps(newPolarProps);
+    }, []);
     const transformPerformance = performance.data.map(el => ({
         ...el,
         subject: capitalizeFirstLetter(performance.kind[el.kind])
@@ -48,10 +64,10 @@ const Performance = ({performance}) => {
     return (
         &lt;div className="performance">
             &lt;ResponsiveContainer width='100%' height='100%'>
-                &lt;RadarChart outerRadius={70} width='100%' height='100%' data={transformPerformance}>
-                    &lt;PolarGrid polarRadius={[10, 20, 40, 55]} strokeLinecap={'butt'} radialLines={false}/>
+                &lt;RadarChart outerRadius={polarProps.outerRadius} width='100%' height='100%' data={transformPerformance}>
+                    &lt;PolarGrid polarRadius={polarProps.polarRadius} strokeLinecap={'butt'} radialLines={false}/>
                     &lt;PolarAngleAxis dataKey="subject" stroke='#FFFFFF' tickLine={false}
-                                    tick={{fontSize: '12px'}}/>
+                                    tick={{fontSize: polarProps.fontSize}}/>
                     &lt;Radar dataKey="value" fill="#FF0101B2" fillOpacity={0.95} legendType='none'/>
                     &lt;Legend/>
                 &lt;/RadarChart>
@@ -72,13 +88,13 @@ export default Performance;
 </div>
 
 <nav>
-    <h2><a href="index.html">Home</a></h2><h3>Global</h3><ul><li><a href="global.html#Activity">Activity</a></li><li><a href="global.html#App">App</a></li><li><a href="global.html#AverageSession">AverageSession</a></li><li><a href="global.html#EnergyCard">EnergyCard</a></li><li><a href="global.html#EnergyCardItem">EnergyCardItem</a></li><li><a href="global.html#Header">Header</a></li><li><a href="global.html#Loading">Loading</a></li><li><a href="global.html#Navbar">Navbar</a></li><li><a href="global.html#Performance">Performance</a></li><li><a href="global.html#Score">Score</a></li><li><a href="global.html#Sidebar">Sidebar</a></li><li><a href="global.html#checkInfo-Fonctionquimodifiel'arri%25C3%25A8re-plandugraphiquelorsqu'untooltipestactif.">checkInfo - Fonction qui modifie l'arrière-plan du graphique lorsqu'un tooltip est actif.</a></li><li><a href="global.html#clearCheckInfo">clearCheckInfo</a></li><li><a href="global.html#getImage-Renvoiel'ic%25C3%25B4necorrespondant%25C3%25A0untitre">getImage - Renvoie l'icône correspondant à un titre</a></li><li><a href="global.html#loadData">loadData</a></li></ul>
+    <h2><a href="index.html">Home</a></h2><h3>Classes</h3><ul><li><a href="DataLoader.html">DataLoader</a></li></ul><h3>Global</h3><ul><li><a href="global.html#Activity">Activity</a></li><li><a href="global.html#App">App</a></li><li><a href="global.html#AverageSession">AverageSession</a></li><li><a href="global.html#EnergyCard">EnergyCard</a></li><li><a href="global.html#EnergyCardItem">EnergyCardItem</a></li><li><a href="global.html#Header">Header</a></li><li><a href="global.html#Loading">Loading</a></li><li><a href="global.html#Navbar">Navbar</a></li><li><a href="global.html#Performance">Performance</a></li><li><a href="global.html#Score">Score</a></li><li><a href="global.html#Sidebar">Sidebar</a></li><li><a href="global.html#USER_ACTIVITY">USER_ACTIVITY</a></li><li><a href="global.html#USER_AVERAGE_SESSIONS">USER_AVERAGE_SESSIONS</a></li><li><a href="global.html#USER_MAIN_DATA">USER_MAIN_DATA</a></li><li><a href="global.html#USER_PERFORMANCE">USER_PERFORMANCE</a></li><li><a href="global.html#checkInfo-Fonctionquimodifiel'arri%25C3%25A8re-plandugraphiquelorsqu'untooltipestactif.">checkInfo - Fonction qui modifie l'arrière-plan du graphique lorsqu'un tooltip est actif.</a></li><li><a href="global.html#clearCheckInfo">clearCheckInfo</a></li><li><a href="global.html#convertDayToLetter">convertDayToLetter</a></li><li><a href="global.html#getImage-Renvoiel'ic%25C3%25B4necorrespondant%25C3%25A0untitre">getImage - Renvoie l'icône correspondant à un titre</a></li></ul>
 </nav>
 
 <br class="clear">
 
 <footer>
-    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 4.0.2</a> on Mon May 01 2023 21:21:44 GMT+0200 (Central European Summer Time)
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 4.0.2</a> on Thu Jun 01 2023 13:44:45 GMT+0200 (Central European Summer Time)
 </footer>
 
 <script> prettyPrint(); </script>
